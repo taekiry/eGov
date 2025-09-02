@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table,td,th{
+	text-align : center;
+	border: 1px solid black;
+}
+td{
+	width:10rem;
+}
+
+</style>
+</head>
+<body>
+	<h1>게시판</h1>
+	<table>
+ <tr>
+ <th>no</th>
+ <th>employee_id</th>
+ <th>first_name</th>
+ <th>last_name</th>
+ <th>salary</th>
+  <th>hire_date</th>
+  <th>button</th>
+ </tr>
+<tr th:each="board : ${boardList}">
+<td th:text="${boardStat.index+1}"></td>
+ <td th:text="${board.bno}"></td>
+
+ <td th:text="${board.writer}"></td>
+ <td th:text="${#dates.format(board.regdate,'yyyy-MM-dd')}"></td>
+  <td th:text="${#dates.format(board.updatedate,'yyyy-MM-dd')}"></td>
+ </tr>
+</table>
+	
+	
+</body>
+</html>

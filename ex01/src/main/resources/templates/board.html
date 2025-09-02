@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<style>
+table,td,th{
+	text-align : center;
+	border: 1px solid black;
+}
+td{
+	width:10rem;
+}
+
+</style>
+</head>
+<body>
+	<h1>사원 정보</h1>
+	
+	<table">
+		<tr>
+			<th>번호</th>
+			<td th:text="${board.bno}"></td>
+		</tr>
+		<tr>
+			<th>제목</th>
+			<td th:text="${board.title}"></td>
+		</tr>
+		<tr>
+			<th>작성자</th>
+			<td th:text="${board.writer}"></td>
+		</tr>
+		<tr >
+			<th>등록일</th>
+			<td th:text="${board.regdate}"></td>
+		</tr>
+		<tr>	
+			<th>업뎃일</th>
+			<td th:text="${board.updatedate}"></td>
+		</tr>	
+	</table>
+	
+</body>
+</html>

@@ -2,23 +2,55 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.emp.mapper.EmpMapper">
 
-<select id ="selectEmp" resultType="EmpVO">
-    SELECT employee_id,
-           first_name,
-           last_name,
-           email,
-           phone_number,
-           hire_date,
-           job_id,
-           salary,
-           commission_pct,
-           manager_id,
-           department_id
-    FROM EMPLOYEES
+
+<sql id="criteria">
+  <where>
+      <if test="first_name != null">
+         upper(FIRST_NAME) LIKE '%' || upper(#{first_name}) || '%'
+         <!-- '%${first_name}%'와 같음 -->
+      </if>
+      <if test="department_id != null">
+      AND DEPARTMENT_ID = #{department_id}
+      </if>
+  </where>
+</sql>
+
+
+
+<select id="selectCount" resultType="Long">
+    select count(*) from employees
+    <include refid="criteria"></include>
+</select>
+
+
+<!-- 전체 조회 -->
+<select id ="selectEmp" resultType="EmpVO" >
+   SELECT a.* FROM (
+          SELECT  /*+INDEX_DESC(EMPLOYEES EMP_EMAIL_UK) */
+                  ROWNUM RN, e.*
+          FROM EMPLOYEES e
+          <include refid="criteria"></include>
+  )a WHERE RN BETWEEN #{first} AND #{last}
+</select>
+
+<!-- 사원에대한 부서정보 조회 맵핑으로 담아둠-->
+<resultMap type="EmpVO" id="empMap">
+ <association property="dept" javaType="DeptVO" 
+              column="department_id" select="selectDeptByID" ></association>
+</resultMap>
+
+<!-- 부서 단건조회 -->
+<select id="selectDeptByID" resultType="DeptVO">
+    select DEPARTMENT_ID,
+           DEPARTMENT_NAME,
+           MANAGER_ID,
+           LOCATION_ID
+    from departments 
+    where department_id = #{department_id}
 </select>
 
 <!-- 단건조회 -->
-<select id ="selectEmpById" resultType="EmpVO">
+<select id ="selectEmpById" resultMap="empMap" parameterType="Long">
     SELECT employee_id,
            first_name,
            last_name,
