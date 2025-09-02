@@ -1,6 +1,7 @@
 package com.example.demo.board.service;
 
 import java.util.Date;
+import java.util.List;
 
 import com.example.demo.common.SearchVO;
 
@@ -21,5 +22,5 @@ public class BoardVO extends SearchVO {
 	private Date regdate;
 	private Date updatedate;
 
-	ReplyVO reply;
+//	List<ReplyVO> reply;
 }
