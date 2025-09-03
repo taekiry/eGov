@@ -24,5 +24,10 @@ public interface EmpMapper {
 	int insertEmp(EmpVO emp);
 
 	// 부서 단건조회
-
+	
+	// 수정
+	
+	// 삭제
+	
+	// 퇴산
 }

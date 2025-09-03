@@ -1,7 +1,10 @@
 package com.example.demo.board.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,10 +38,13 @@ public class ReplyController {
 		return "";
 	}
 	
-	// 조회
+	//전체 조회
 	@GetMapping("/board/{bno}/reply")
-	public String list() {
-		return"";
+	public List<ReplyVO> list(@PathVariable Long bno, ReplyVO reply) {
+		reply.setBno(bno);
+		reply.setFirst(1);
+		reply.setLast(10);
+		return replyMapper.getList(reply);
 	}
 	
 	//단건 조회

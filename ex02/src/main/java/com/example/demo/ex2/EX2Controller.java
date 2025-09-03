@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.example.demo.ex1.PersonForm;
 import com.example.demo.ex1.UserVO;
+
+import jakarta.validation.Valid;
 
 @RequestMapping("/api")
 @RestController // 기존 컨트롤러 + @ResponseBody (JSON)
@@ -57,4 +61,7 @@ public class EX2Controller {
 		return response;
 	}
 
+
+	
+	
 }
