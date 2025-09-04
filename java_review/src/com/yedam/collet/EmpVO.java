@@ -1,5 +1,6 @@
 package com.yedam.collet;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 //@Getter
@@ -11,11 +12,14 @@ import lombok.Data;
 //@NoArgsConstructor
 @Data
 //@Builder
+@AllArgsConstructor
+
 // 위 전부 다 추가해줌 data하나로
+
 public class EmpVO {
-	final private int empno;
-	final private String ename;
-	private String dept;
+	private int empno;
+	private String ename;
+	private int dept;
 
 //	public EmpVO(String empno, String ename) {
 //		this.empno = empno;

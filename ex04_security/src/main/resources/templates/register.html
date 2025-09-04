@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+input{
+	width:100%
+}
+</style>
+</head>
+<body>
+<h1>register</h1>
+	<form>
+	<input type="text" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+	</form>
+	[[${_csrf.parameterName}]]<hr>
+	[[${_csrf.token}]]<hr>
+	[[${_csrf.headerName}]]
+	
+	
+</body>
+
+</html>

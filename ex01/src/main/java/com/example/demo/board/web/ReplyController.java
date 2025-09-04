@@ -48,7 +48,7 @@ public class ReplyController {
 	}
 	
 	//단건 조회
-	@GetMapping("/reply/{rno}")
+	@GetMapping("/reply/{rno}"	)
 	public String get() {
 		return "";
 	}

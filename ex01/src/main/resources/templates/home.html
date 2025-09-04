@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+<title>Spring Security Example</title>
+</head>
+<body>
+	<h1>Welcome!</h1>
+
+	<div sec:authorize="not isAuthenticated()">
+		<a href="/login">login 안되었음</a>
+	</div>
+	<div sec:authorize="isAuthenticated()">
+		<span sec:authentication="principal.userVO.fullName"></span>
+		<span th:text="${session.dept_name}">deptname</span>
+	</div>
+	<div sec:authorize="hasRole('ROLE_ADMIN')">This content is only
+		shown to administrators.</div>
+	<div sec:authorize="hasRole('ROLE_USER')">This content is only
+		shown to users.</div>
+	<p>
+		Click <a th:href="@{/login}">here</a> to Log In
+	</p>
+</body>
+</html>
