@@ -11,4 +11,7 @@ public interface BoardService {
 
 	Long selectCount();
 	
+	int insertBoard(BoardVO board);
+	
+	int deleteBoard(Long bno);
 }

@@ -21,19 +21,36 @@
 
 <select id="selectBoard" resultType="BoardVO">
 	select a.* FROM (
-	SELECT /*+INDEX_DESC(tbl_board PK_BOARD)*/
+	SELECT  /* +INDEX_DESC(TBL_BOARD PK_BOARD) */
 		ROWNUM RN, e.*
 		from tbl_board e
 	)a WHERE RN BETWEEN #{first} AND #{last}
+	
 
 </select>
 
 
 <select id ="selectBoardByNo" resultType="BoardVO">
-	select bno,title,content,writer,regdate,updatedate 
+	select bno,title,content,writer,regdate,updatedate,attach
 	from tbl_board
 	where bno = #{bno}
 </select>
+
+<insert id="insertBoard" parameterType="BoardVO" >
+	insert into tbl_board ( bno,
+	                        title,
+	                        content,
+	                        writer,
+	                        attach)
+	values(
+	        seq_board.nextval,
+	        #{title},
+	        #{content},
+	        #{writer},
+	        #{attach}
+	        )
+	
+</insert>
 
 
 </mapper>

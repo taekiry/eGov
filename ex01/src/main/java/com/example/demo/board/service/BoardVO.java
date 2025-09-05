@@ -21,6 +21,8 @@ public class BoardVO extends SearchVO {
 	private String writer;
 	private Date regdate;
 	private Date updatedate;
-
+	
+	//첨부파일
+	String attach;
 //	List<ReplyVO> reply;
 }

@@ -15,4 +15,6 @@ public interface BoardMapper {
 	BoardVO selectBoardByNo(Long bno);
 
 	Long selectCount();
+	
+	int insertBoard(BoardVO board);
 }

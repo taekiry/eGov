@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table,td,th{
+	text-align : center;
+	border: 1px solid black;
+}
+td{
+	width:10rem;
+}
+
+</style>
+</head>
+<body>
+	<h1>사원 정보</h1>
+	
+	<table class="empt">
+		<tr>
+			<th>사번</th>
+			<td th:text="${emp.employee_id}"></td>
+		</tr>
+		<tr>
+			<th>이름</th>
+			<td th:text="${emp.last_name}"></td>
+		</tr>
+		<tr>
+			<th>급여</th>
+			<td th:text="${#numbers.formatCurrency(emp.salary)}"></td>
+		</tr>
+		<tr >
+			<th>입사일자</th>
+			<td th:text="${#dates.format(emp.hire_date,'yyyy-MM-dd')}"></td>
+		</tr>
+		<tr>	
+			<th>부서명</th>
+			<td th:text="${emp.dept.department_name}"></td>
+		</tr>	
+	
+	</table>
+	
+</body>
+</html>
